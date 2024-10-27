@@ -1,0 +1,9 @@
+
+.wide-input {
+    width: 150px; 
+}
+
+form div {
+    margin-bottom: 10px;
+    display: block;
+}
