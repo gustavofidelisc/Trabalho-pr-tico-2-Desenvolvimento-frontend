@@ -109,6 +109,8 @@ Acceptance criteria:
 
 "As an Administrator I want to view product details in order verify if all relevant product information is available."
 
+Acceptance criteria:
+
 - Different of US-2032 where it is possible to see some product fields, this US allows the Administrator to visualize all product details (fields) for a specific product.
 - The product details must be shown in the same screens created in the US-1050 - Create Product
 
@@ -116,16 +118,26 @@ Acceptance criteria:
 
  "As an Administrator I want to delete a product in order to have only products that are sold by Blue Velvet Music Store."
 
- - Only authenticated users in the role orf admin or editor can delete products.
+Acceptance criteria:
+
+- Only authenticated users in the role orf admin or editor can delete products.
 - Also delete the product images in procucts-image directory
 - Test Delete a product
 - A message must be displayed asking you whether you want to delete this product or not.
 
+ ### US-1232: Login
+
+"As an Administrator I want to login in the BlueVelvet Music Store application with my registered account in order to manage all products sold by the company."
+
+Acceptance criteria:
+
+- A login has an e-mail address and a password.
+- there must be an explicit option tor remember the booking manager credentials
+- An incorrect login message must be shown for incorrect email and/or password
+  
  ### Other requirements
 - Registration
   - Users can register a new account
-- Login
-  - Users can login using their registered accounts
 - Logout
   - A user can logout once logged in.
 - Error Page
