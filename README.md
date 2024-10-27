@@ -5,7 +5,7 @@ This application is used in the course Web Programming, taught by Rodrigo Martin
 
 You can try the the webapplication without configuring the backend and a MySQL database. The front-end is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
 
-## What the students neeed to do in this assignemnt?
+## What the students neeed to do in this assignment?
 
 - Use vanilla CSS (no library of framework allowed) to style all the HTML pages created for the user stories described in the sequence of this README file.
 - Use the JavaScript LocalStorage API to simulate back-end persistence in the frontend.
@@ -139,6 +139,7 @@ Acceptance criteria:
 - A login has an e-mail address and a password.
 - there must be an explicit option tor remember the booking manager credentials
 - An incorrect login message must be shown for incorrect email and/or password
+- The password must be at least 8 characters long
   
  ### Other requirements
 - Registration
