@@ -141,10 +141,20 @@ Acceptance criteria:
 - An incorrect login message must be shown for incorrect email and/or password
 - The password must be at least 8 characters long
 - There must be an option allowing new administrators to create an account. Suggestion: "Don't have an account? Register"
-  
+
+ ### US-1603: Register new users
+
+"As an administrator I want to register new users in BlueVelvet Music Store application to allow multiple people to work collaboratively and perform their responsibilities in the company"
+
+Acceptance criteria:
+
+- Only administrators can register new users.
+- A user must have a role.
+- 5 User (admin) roles: Administrator, Sales Manager, Editor,, Assistant, Shipping Manager
+- A user has an e-mail address and a password.
+
  ### Other requirements
-- Registration
-  - Users can register a new account
+
 - Logout
   - A user can logout once logged in.
 - Error Page
