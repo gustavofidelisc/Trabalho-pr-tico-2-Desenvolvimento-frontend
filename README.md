@@ -137,8 +137,8 @@ Acceptance criteria:
 Acceptance criteria:
 
 - A login has an e-mail address and a password.
-- there must be an explicit option tor remember the booking manager credentials
-- An incorrect login message must be shown for incorrect email and/or password
+- there must be an explicit option tor remember the administrator credentials
+- An incorrect login message must be shown for incorrect email and/or password. Suggestion: "Incorrect email or password. Please try again"
 - The password must be at least 8 characters long
 - There must be an option allowing new administrators to create an account. Suggestion: "Don't have an account? Register"
 
@@ -152,6 +152,7 @@ Acceptance criteria:
 - A user must have a role.
 - 5 User (admin) roles: Administrator, Sales Manager, Editor,, Assistant, Shipping Manager
 - A user has an e-mail address and a password.
+- A message "Already have an account? Login" must be presented to allow returnin to the login page.
 
  ### Other requirements
 
