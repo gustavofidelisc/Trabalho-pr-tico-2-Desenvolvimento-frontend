@@ -23,9 +23,15 @@
            
             <input type="text" id="category" placeholder="Category" required>
            
-            <input type="file" id="mainImage" accept="image/png" required>
+            <div>
+                <label>Choose main image</label>
+                <input type="file" id="mainImage" accept="image/png" required>
+            </div>
             
-            <input type="file" id="featuredImages" accept="image/png" multiple>
+            <div>
+                <label>Choose featured images</label>
+                <input type="file" id="featuredImages" accept="image/png" multiple>
+            </div>
           
             <input type="number" id="listPrice" placeholder="List Price" step="0.01" required>
          
