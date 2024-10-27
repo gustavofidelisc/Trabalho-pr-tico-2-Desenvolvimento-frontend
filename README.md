@@ -140,6 +140,7 @@ Acceptance criteria:
 - there must be an explicit option tor remember the booking manager credentials
 - An incorrect login message must be shown for incorrect email and/or password
 - The password must be at least 8 characters long
+- There must be an option allowing new administrators to create an account. Suggestion: "Don't have an account? Register"
   
  ### Other requirements
 - Registration
