@@ -1,8 +1,5 @@
-# products-management-bluevelvet-music-store
-Product management frontend web application for the BlueVelvet Music Store
-
 # Product management front-end web application for the Bluevelvet Music Store
-A products management front-end web application made using Vanilla HTML, CSS, and JavaScript.   
+A product management front-end web application made using Vanilla HTML, CSS, and JavaScript.   
 
 This application is used in the course Web Programming, taught by Rodrigo Martins Pagliares and Fellipe Guilherme Rey de Souza at the undergraduate Computer Science course at UNIFAL-MG - Brazil.
 
