@@ -5,15 +5,20 @@ This application is used in the course Web Programming, taught by Rodrigo Martin
 
 You can try the the webapplication without configuring the backend and a MySQL database. The front-end is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
 
+## What the students neeed to do in this assignemnt?
+
+- Use vanilla CSS (no library of framework allowed) to style all the HTML pages created for the user stories described in the sequence of this README file.
+- Use the JavaScript LocalStorage API to simulate back-end persistence in the frontend.
+
 ## Technologies Used (frontend)
 
 - HTML
-- CSS
-- JavaScript
+- Vanilla CSS (without CSS libraries such as BootStrap pr TailWind)
+- JavaScript (without libraries\frameworks such as vue or React)
 
 ## Definition of DONE (Scrum)
 
-For the sake of this project, only the views (Web User Interfaces) for the user stories the user stories must be implemented. Backend persistence must be simulated with JavaScript LocalStorage API). 
+For the sake of this assignment, only the views (Web User Interfaces) for the user stories the user stories must be implemented. Backend persistence must be simulated with JavaScript LocalStorage API). 
 
 The user stories are considered completed if:
 - They meet the acceptance criteria;
