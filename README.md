@@ -52,6 +52,13 @@ Acceptance criteria:
 - The password must be at least 8 characters long
 - There must be an option allowing new administrators to create an account. Suggestion: "Don't have an account? Register"
 
+![US-1232: Login](frontend/images/user_stories/us-1232/begin/us-1232-begin.png)
+**Figure 1:** US-1232 Login Screen (provided as starting point for the assignment)
+
+![US-1232: Login](frontend/images/user_stories/us-1232/end/us-1232-end.png)
+**Figure 2:** US-1232 Login Screen (possible solution for the assignment after improving the CSS style)
+
+
  ### US-1603: Register new users
 
 "As an administrator I want to register new users in BlueVelvet Music Store application to allow multiple people to work collaboratively and perform their responsibilities in the company"
