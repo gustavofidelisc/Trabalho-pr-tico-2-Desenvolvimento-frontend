@@ -153,7 +153,7 @@ https://www.jqueryscript.net/text/Rich-Text-Editor-jQuery-RichText.html
 **Figure 7:** US-1050 - Create product (provided as starting point for the assignment)
 
 ![US-1050: Create product](frontend/images/user_stories/us-1050/end/us-1050-end.png)
-**Figure 8:** US-1050 - Create product (ppossible solution for the assignment after improving the CSS style)
+**Figure 8:** US-1050 - Create product (possible solution for the assignment after improving the CSS style)
 
 ### US-1452: Edit product information
 
@@ -176,11 +176,17 @@ Acceptance criteria:
 - Test Updating Overview, Main image, Description & Shipping
 - A form is displayed with the products data already filled in.
 
+![US-1452: Edit product information](frontend/images/user_stories/us-1452/begin/us-1452-begin-part1.png)
+**Figure 9:** US-1452 - Edit product information (provided as starting point for the assignment)
+
+![US-1452: Edit product information](frontend/images/user_stories/us-1452/begin/us-1452-begin-part2.png)
+**Figure 10:** US-1452 - Edit product information (provided as starting point for the assignment)
+
 ![US-1452: Edit product information](frontend/images/user_stories/us-1452/end/us-1452-end-part1.png)
-**Figure 9:** US-1452 - Edit product information (ppossible solution for the assignment after improving the CSS style - part 1/2)
+**Figure 11:** US-1452 - Edit product information (ppossible solution for the assignment after improving the CSS style - part 1/2)
 
 ![US-1452: Edit product information](frontend/images/user_stories/us-1452/end/us-1452-end-part2.png)
-**Figure 10:** US-1452 - Edit product information (ppossible solution for the assignment after improving the CSS style - part 2/2)
+**Figure 12:** US-1452 - Edit product information (possible solution for the assignment after improving the CSS style - part 2/2)
 
 ### US-1045: View product details for administrators
 
