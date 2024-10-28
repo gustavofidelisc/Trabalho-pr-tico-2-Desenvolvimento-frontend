@@ -102,9 +102,10 @@ Acceptance criteria:
 - Only authenticated users in the role orf admin, salesperson or shipper can access the dashboard.
 - The dashboard, among other things, contains  a  list products.
 - A message showing the logged-in user should be presented: "Welcome,{username} (role)
+- if a user tries to access the dashboard page without logging in then an error page is displayed.
 - An option to logout of this page must be presented for security reasons. After clicking logout, the login form must be presented (See US 1351 and 1358)
 - The list of products may be too long. Provide a way for navigation (e.g. pagination for the products list)
- - By default, it must be possible to see 10 products per page (pagination)
+- By default, it must be possible to see 10 products per page (pagination)
 - Pagination is based on product names 
 - Pagination should work well with sorting 
 - Sort by product name, ID, brand, and category
@@ -157,15 +158,4 @@ Acceptance criteria:
 - 5 User (admin) roles: Administrator, Sales Manager, Editor,, Assistant, Shipping Manager
 - A user has an e-mail address and a password.
 - A message "Already have an account? Login" must be presented to allow returnin to the login page.
-
- ### Other requirements
-
-- Logout
-  - A user can logout once logged in.
-- Error Page
-  - if a user tries to access the dashboard page without logging in then an error page is displayed.
-- Sorting by columns
-  - Each column is sortable. Click the column name to see the feature at play.
-- Filtering by columns
-  - You can select the column you want to and search specific entries.
-
+ 
