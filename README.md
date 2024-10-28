@@ -143,6 +143,12 @@ https://www.jqueryscript.net/text/Rich-Text-Editor-jQuery-RichText.html
            ----- extra-images/
                                       ........ extra-image-1.png
 
+![US-1050: Create product](frontend/images/user_stories/us-1050/begin/us-1050-begin.png)
+**Figure 5:** US-1050 - Create product (provided as starting point for the assignment)
+
+![US-1050: Create product](frontend/images/user_stories/us-1050/end/us-1050-end.png)
+**Figure 6:** US-1050 - Create product (ppossible solution for the assignment after improving the CSS style)
+
 ### US-1452: Edit product information
 
 "As an Administrator I want to edit the data of an exiting product to improve/fix the information of the products sold by Blue Velvet Music Store."
