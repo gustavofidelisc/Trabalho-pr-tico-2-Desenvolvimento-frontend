@@ -93,15 +93,18 @@ Acceptance criteria:
 - Test Updating Overview, Main image, Description & Shipping
 - A form is displayed with the products data already filled in.
 
-### US-2032: List products for administrators
+### US-2032: Access the Product Management Dashboard 
 
-"As an Administrator I want to list all of products in order to have a global view of all products sold on Blue Velvet Music store."
+"As an Administrator I want to access the Product Management Dashboard to manage all products, including listing all of products in order to have a global view of all products sold on Blue Velvet Music store."
 
 Acceptance criteria:
 
-- Only authenticated users in the role orf admin, salesperson or shipper can list products.
+- Only authenticated users in the role orf admin, salesperson or shipper can access the dashboard.
+- The dashboard, among other things, contains  a  list products.
+- A message showing the logged-in user should be presented: "Welcome,{username} (role)
+- An option to logout of this page must be presented for security reasons. After clicking logout, the login form must be presented (See US 1351 and 1358)
 - The list of products may be too long. Provide a way for navigation (e.g. pagination for the products list)
-- By default, it must be possible to see 10 products per page (pagination)
+ - By default, it must be possible to see 10 products per page (pagination)
 - Pagination is based on product names 
 - Pagination should work well with sorting 
 - Sort by product name, ID, brand, and category
@@ -109,6 +112,7 @@ Acceptance criteria:
 - Filter: search by product name, short description, full description, brand name, and category name
 - The fields main image, product name, brand, and category must be shown
 - To see product details, see US-1045
+- From the dashboard it must be possible to add, view deails, delete, and edit product information.
 
 ### US-1045: View product details for administrators
 
