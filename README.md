@@ -99,6 +99,12 @@ Acceptance criteria:
 - From the dashboard it must be possible to add, view deails, delete, and edit product information.
 - There must be an option to reset the product list to it's initial state (to facilitate testing, there will be 10 products initially created when first running the application of after selecting the option reset the product list.
 
+![US-1232: Register](frontend/images/user_stories/us-2032/begin/us-2032-begin.png)
+**Figure 5:** US-2032 - Access the Product Management Dashboard (provided as starting point for the assignment)
+
+![US-1232: Register](frontend/images/user_stories/us-2032/end/us-2032-end.png)
+**Figure 6:** US-2032 - Access the Product Management Dashboard (possible solution for the assignment after improving the CSS style)
+
 ### US-1050: Create product
 
 "As an Administrator I want to create a product to increase the the variaty of music products sold by BlueVelvet Music Store"
@@ -144,10 +150,10 @@ https://www.jqueryscript.net/text/Rich-Text-Editor-jQuery-RichText.html
                                       ........ extra-image-1.png
 
 ![US-1050: Create product](frontend/images/user_stories/us-1050/begin/us-1050-begin.png)
-**Figure 5:** US-1050 - Create product (provided as starting point for the assignment)
+**Figure 7:** US-1050 - Create product (provided as starting point for the assignment)
 
 ![US-1050: Create product](frontend/images/user_stories/us-1050/end/us-1050-end.png)
-**Figure 6:** US-1050 - Create product (ppossible solution for the assignment after improving the CSS style)
+**Figure 8:** US-1050 - Create product (ppossible solution for the assignment after improving the CSS style)
 
 ### US-1452: Edit product information
 
