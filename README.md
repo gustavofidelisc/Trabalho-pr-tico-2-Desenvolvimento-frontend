@@ -114,6 +114,7 @@ Acceptance criteria:
 - The fields main image, product name, brand, and category must be shown
 - To see product details, see US-1045
 - From the dashboard it must be possible to add, view deails, delete, and edit product information.
+- There must be an option to reset the product list to it's initial state (to facilitate testing, there will be 10 products initially created when first running the application of after selecting the option reset the product list.
 
 ### US-1045: View product details for administrators
 
