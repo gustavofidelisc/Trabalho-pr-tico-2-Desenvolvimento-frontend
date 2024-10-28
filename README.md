@@ -3,7 +3,7 @@ A product management front-end web application made using Vanilla HTML, CSS, and
 
 This application is used in the course Web Programming, taught by Rodrigo Martins Pagliares and Fellipe Guilherme Rey de Souza at the undergraduate Computer Science course at UNIFAL-MG - Brazil.
 
-You can try the the webapplication without configuring the backend and a MySQL database. The front-end is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
+You can try the the web application without configuring the backend and a MySQL database. The front-end is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
 
 ## What the students neeed to do in this assignment?
 
@@ -183,12 +183,12 @@ Acceptance criteria:
 **Figure 10:** US-1452 - Edit product information (provided as starting point for the assignment)
 
 ![US-1452: Edit product information](frontend/images/user_stories/us-1452/end/us-1452-end-part1.png)
-**Figure 11:** US-1452 - Edit product information (ppossible solution for the assignment after improving the CSS style - part 1/2)
+**Figure 11:** US-1452 - Edit product information (possible solution for the assignment after improving the CSS style - part 1/2)
 
 ![US-1452: Edit product information](frontend/images/user_stories/us-1452/end/us-1452-end-part2.png)
 **Figure 12:** US-1452 - Edit product information (possible solution for the assignment after improving the CSS style - part 2/2)
 
-### US-1045: View product details for administrators
+### US-1045: View product details
 
 "As an Administrator I want to view product details in order verify if all relevant product information is available."
 
@@ -196,6 +196,12 @@ Acceptance criteria:
 
 - Different of US-2032 where it is possible to see some product fields, this US allows the Administrator to visualize all product details (fields) for a specific product.
 - The product details must be shown in the same screens created in the US-1050 - Create Product
+ 
+![US-1045: Create product](frontend/images/user_stories/us-1045/begin/us-1045-begin.png)
+**Figure 13:** US-1045 - View product details (provided as starting point for the assignment)
+
+![US-1050: Create product](frontend/images/user_stories/us-1045/end/us-1045-end.png)
+**Figure 14:** US-1045 - View product details (possible solution for the assignment after improving the CSS style)
 
  ### US-1627: Delete product
 
