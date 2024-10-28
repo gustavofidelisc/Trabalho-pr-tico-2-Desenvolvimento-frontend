@@ -1,15 +1,22 @@
-# Product management front-end web application for the Bluevelvet Music Store
+# Term assignment: Product management front-end web application for the Bluevelvet Music Store
 A product management front-end web application made using Vanilla HTML, CSS, and JavaScript.   
 
-This application is used in the course Web Programming, taught by Rodrigo Martins Pagliares and Fellipe Guilherme Rey de Souza at the undergraduate Computer Science course at UNIFAL-MG - Brazil.
+This application must be developed as term assignment for the first part (frontend development) of Web Programming course, taught by Rodrigo Martins Pagliares and Fellipe Guilherme Rey de Souza at the undergraduate Computer Science course at UNIFAL-MG - Brazil.
 
-You can try the the web application without configuring the backend and a MySQL database. The front-end is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
+You can try the the web application without a backend application and a database server. The frontend in this term assignment is self-contained and can be used to perform simple CRUD operations on products table upon logging in. The data is stored and retrieved from LocalStorage. New users can register themselves.
 
 ## What the students neeed to do in this assignment?
 
 - Use vanilla CSS (no library of framework allowed) to style all the HTML pages created for the user stories described in the sequence of this README file.
 - Use the JavaScript LocalStorage API to simulate back-end persistence in the frontend.
+- In addition to the details provided in this README.md file, the student must take a look at all the files located in the frontend directory of this repository looking for comments with addiional tips and instructions for this assignment.
 
+## Technologies Used (frontend)
+
+- HTML
+- Vanilla CSS (without CSS libraries such as BootStrap pr TailWind)
+- JavaScript (without libraries\frameworks such as vue or React)
+  
 ## User stories to be implemented in this assignment
 
 | # | ID | DESCRIPTION |
@@ -21,12 +28,6 @@ You can try the the web application without configuring the backend and a MySQL 
 | 05    | US-1452   | Edit product information     |
 | 06    | US-1045   | View product details for administrators     |
 | 07    | US-1627   | Delete product    |
-
-## Technologies Used (frontend)
-
-- HTML
-- Vanilla CSS (without CSS libraries such as BootStrap pr TailWind)
-- JavaScript (without libraries\frameworks such as vue or React)
 
 ## Definition of DONE (Scrum)
 
