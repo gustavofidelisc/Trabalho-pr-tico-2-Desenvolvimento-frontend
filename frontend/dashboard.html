@@ -11,6 +11,12 @@
         <h1>BlueVelvet Music Store</h1>
         <h2>Product Management</h2>
 
+        <!--
+        TRABALHO: O nome (Atticus) e papel (Administrator) abaixo foram inseridos
+        hard-coded. Na sua soluçõa o nome e papel exibidos deverão ser obtidos com 
+        base no usuário autenticado.
+        Template:  Welcome, {name} {(role)}
+        -->
         <div>Welcome, Atticus (Administrator)
             <button id="logoutBtn">Logout</button>
         </div>
@@ -39,7 +45,7 @@
                 </tr>
             </thead>
             <!-- 
-                EXERCÍCIO - Em vez de incluir manualmente os produtos como abaixo, 
+                TRABALHO - Em vez de incluir manualmente os produtos como abaixo, 
                 você deve usar JavaScript para percorrer a lista de produtos 
                 cadastrados com a API LocalStorage de JavaScript e exibindo cada produto 
                 em uma linha da tabela. Na sua solução com JavaScript, se tivermos mais de 5 produtos cadastrados, 
@@ -182,9 +188,11 @@
         </div>
     </div>
 
-    <!-- Neste momento, o código apenas exibe um alerta solicitando confirmação 
-    para excluir um produto. Você deve implementar a remoção do produto usando 
-    a API local storage e verificar a correta remoção do produto na lista de produtos exibidas no dashboard. -->
+    <!-- 
+        TRABALHO: Neste momento, o código apenas exibe um alerta solicitando confirmação 
+        para excluir um produto. Você deve implementar a remoção do produto usando 
+        a API local storage e verificar a correta remoção do produto na lista de produtos exibidas no dashboard. 
+    -->
     <script>
         // JavaScript to show a delete confirmation alert
         document.addEventListener('DOMContentLoaded', () => {
