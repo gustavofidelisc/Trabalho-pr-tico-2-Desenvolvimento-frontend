@@ -4,13 +4,22 @@ sinta-se à vontade em alterá-lo completamente de forma a tornar a aplicação 
 "bonita"e lembrando sempre de testar o layout responsivo de sua soluçõa.
  */
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
 .container {
-    width: 80%;
-    margin: auto;
+    width: 70%;
     padding: 20px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    background-color: #f9f9f9; 
+    overflow: hidden; /* Garante que o desfoque não "vaze" nas bordas */
+    z-index: 1; /* Coloca a camada na frente do desfoque */   
+    box-sizing: border-box; /* Garante que padding e borda sejam inclusos nas dimensões */
+    z-index: 1;
 }
 
 form {
