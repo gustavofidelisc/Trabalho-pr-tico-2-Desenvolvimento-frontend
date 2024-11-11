@@ -3,6 +3,7 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -12,60 +13,56 @@ body{
 body::before {
     content: "";
     position: absolute;
-    inset: 0; /* Expande para toda a área da div, incluindo bordas arredondadas */
+    inset: 0; 
     background: url("../images/backgroundLogin.png") no-repeat center center;
     background-size: cover;
-    filter: blur(3px); /* Ajuste conforme desejado */
-    z-index: -1; /* Coloca a camada atrás do conteúdo da div */
-    border-radius: 5px; /* Mantém o mesmo raio para alinhar com a borda */
+    filter: blur(3px); 
+    z-index: -1; 
 }
 
 h1{
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     font-size: 25px;
 }
 
-label{
-    margin: 5px 0 0 0;
+h2{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
 }
 
-input{
-    width: 95%;
+input, select, button {
+    width: 100%; 
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    box-sizing: border-box; 
 }
 
 .remember-me{
     display: flex;
     align-content: start;
     align-items: center;
-    gap : 5px;
+    gap : 2px;
     margin: 0 0 5px;
 }
 
 #remember-me{
    width: 3%;
-   margin-top: 5px;
+   cursor: pointer;
 }
 
 label{
     font-size: 13px;
-}
-
-button{
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background: #f9f9f9;
     cursor: pointer;
 }
+
 
 button:hover{
     background: #12124e;
     color: white;
+    cursor: pointer;
 }
 
 p {
@@ -74,6 +71,8 @@ p {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: underline;
     color: #12124e;
+
 }
+
