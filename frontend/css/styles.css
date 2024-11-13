@@ -10,49 +10,7 @@ sinta-se à vontade em alterá-lo completamente de forma a tornar a aplicação 
     font-family: 'Roboto', sans-serif;
 }
 
-.container {
-    width: 50%;
-    padding: 20px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9; 
-    overflow: hidden; /* Garante que o desfoque não "vaze" nas bordas */
-    z-index: 1; /* Coloca a camada na frente do desfoque */   
-    box-sizing: border-box; /* Garante que padding e borda sejam inclusos nas dimensões */
-    z-index: 1;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-#productControls {
-    margin-top: 15px;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-
-
-table {
-    width: 100%;
-    border-collapse: collapse; /* Ensures borders are not double-spaced */
-}
-
-th, td {
-    border: 1px solid #ddd; /* Creates a light gray border */
-    padding: 8px; /* Adds some space inside the cells */
-    text-align: left; /* Aligns text to the left */
-}
-
-/* Center-align only the images in the second column */
-td:nth-child(2) {
-    text-align: center;
-}
-
+/*Estilos Bases de tags */
 
 h1{
     text-align: center;
@@ -74,24 +32,9 @@ input, select, button {
     box-sizing: border-box; 
 }
 
-.remember-me{
-    display: flex;
-    align-content: start;
-    align-items: center;
-    gap : 2px;
-    margin: 0 0 5px;
+#registerForm div > input, #role, button {
+    margin: 5px 0 5px 0; 
 }
-
-#remember-me{
-   width: 3%;
-   cursor: pointer;
-}
-
-label{
-    font-size: 13px;
-    cursor: pointer;
-}
-
 
 button:hover{
     background: #12124e;
@@ -110,16 +53,111 @@ a {
 
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/*====   Registro e Login   ====*/
+.container {
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9; 
+    box-shadow: 4px 4px 10px rgba(182, 176, 176, 0.2);
 }
 
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#productControls {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.remember-me{
+    display: flex;
+    align-content: start;
+    align-items: center;
+    gap : 2px;
+}
+
+#remember-me{
+   width: 3%;
+   cursor: pointer;
+}
+
+label{
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/*====   Dashboard   ====*/
+.user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9; 
+}
+
+#logoutBtn{
+    width: 30%;
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are not double-spaced */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Creates a light gray border */
+    padding: 8px; /* Adds some space inside the cells */
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Center-align only the images in the second column */
+td:nth-child(2) {
+    text-align: center;
+}
+
+label{
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#productControls button{
+    height: auto;
+    width: 60%;
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+}
+
+#productTable {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#pagination{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px;
+}
+
+#pagination button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #12124e;
+    cursor: pointer;
+    width: auto;
+    height: 30px;
+    color: white;
+}
 
 @media (max-width: 768px) {
     .container {

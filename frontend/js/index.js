@@ -18,6 +18,7 @@ loginForm.addEventListener('submit', (e) => {
         users.forEach((user) => {
             if (enteredEmail === user['email'] && enteredPassword === user['password']) {
                 loginSucess = true
+                localStorage.setItem('user', JSON.stringify(users));
                 window.location.href = './dashboard.html';
             }
         });
