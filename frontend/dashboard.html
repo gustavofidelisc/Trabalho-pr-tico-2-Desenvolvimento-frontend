@@ -26,7 +26,7 @@
         <div id="productControls">
             <button id="resetProductsBtn" onclick="loadProducts()">Reset Products to Initial State</button>
             <button id="addProductBtn">Add Product</button>
-            <input type="text" id="searchInput" placeholder="Search products..." onchange="searchProduct()">
+            <input type="text" id="searchInput" placeholder="Search products..." oninput="searchProduct()">
             <select id="sortSelect" onchange="sortTable(value)">
                 <option value="name">Sort by Name</option>
                 <option value="id">Sort by ID</option>
