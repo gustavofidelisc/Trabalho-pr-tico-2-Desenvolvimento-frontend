@@ -1,3 +1,9 @@
+if (localStorage.hasOwnProperty('remember-login')) {
+    user = JSON.parse(localStorage.getItem('remember-login'));
+    localStorage.setItem('user', JSON.stringify(user));
+    window.location.href = './dashboard.html';
+}
+
 var loginForm = document.getElementById('login-form');
 
 loginForm.addEventListener('submit', (e) => {
@@ -18,7 +24,13 @@ loginForm.addEventListener('submit', (e) => {
         users.forEach((user) => {
             if (enteredEmail === user['email'] && enteredPassword === user['password']) {
                 loginSucess = true
-                localStorage.setItem('user', JSON.stringify(users));
+                localStorage.setItem('user', JSON.stringify(user));
+
+                checkbox = document.getElementById('remember-me')
+                if(checkbox.checked){
+                    localStorage.setItem('remember-login', JSON.stringify(user));
+                }
+
                 window.location.href = './dashboard.html';
             }
         });
