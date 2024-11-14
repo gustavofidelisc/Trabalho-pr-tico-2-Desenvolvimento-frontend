@@ -50,6 +50,18 @@ function sortTable(value){
     loadProducts();
 }
 
+//funcao para buscar produtos pelo nome
+
+function searchProduct(){
+    const searchInput = document.getElementById('searchInput');
+    const searchValue = searchInput.value.toLowerCase();
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchValue));
+    localStorage.setItem('productsFilter', JSON.stringify(filteredProducts));
+    loadProducts(1, true); 
+}
+
+
 // Configura o número de itens por página
 const itemsPerPage = 5;
 
@@ -74,14 +86,19 @@ if (!localStorage.getItem('products')) {
 }
 
 // Função para carregar produtos da página atual
-function loadProducts(page = 1) {
-    renderProducts(page);
-    renderPagination();
+function loadProducts(page = 1, filter) {
+    renderProducts(page, filter);
+    renderPagination(filter);
 }
 
 // Renderiza a lista de produtos na tabela
-function renderProducts(page) {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+function renderProducts(page, filter) {
+    if(filter){
+        var products = JSON.parse(localStorage.getItem('productsFilter')) || [];
+    }
+    else{
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+    }
     const productList = document.getElementById('productList');
     productList.innerHTML = ''; // Limpa a tabela
 
@@ -110,7 +127,12 @@ function renderProducts(page) {
 
 // Função para deletar um produto
 function deleteProduct(index) {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+    // Confirmação para deletar
+    const confirmation = confirm("Are you sure you want to delete the selected products?");
+    if (!confirmation) return;
+
+    // Obtém a lista de produtos do localStorage
+    let products = JSON.parse(localStorage.getItem('products')) || [];
     
     // Remove o item do array e atualiza o localStorage
     products.splice(index, 1);
@@ -121,17 +143,24 @@ function deleteProduct(index) {
 }
 
 // Renderiza a paginação
-function renderPagination() {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
+function renderPagination(filter) {
+    if(filter){
+        var products = JSON.parse(localStorage.getItem('productsFilter')) || [];
+    }
+    else{
+        var products = JSON.parse(localStorage.getItem('products')) || [];
+    }
     const totalPages = Math.ceil(products.length / itemsPerPage);
     const paginationContainer = document.getElementById('pagination');
     paginationContainer.innerHTML = '';
+    if(totalPages >1){
+        for (let page = 1; page <= totalPages; page++) {
+            const pageButton = document.createElement('button');
+            pageButton.textContent = page;
+            pageButton.onclick = () => loadProducts(page);
+            paginationContainer.appendChild(pageButton);
+        }
 
-    for (let page = 1; page <= totalPages; page++) {
-        const pageButton = document.createElement('button');
-        pageButton.textContent = page;
-        pageButton.onclick = () => loadProducts(page);
-        paginationContainer.appendChild(pageButton);
     }
 }
 

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - BlueVelvet Music Store</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="./js/verifyLogin.js"></script>
     <script src="./js/dashboard.js" defer></script>
 </head>
 <body>
@@ -23,9 +24,9 @@
         </div>
        
         <div id="productControls">
-            <button id="resetProductsBtn">Reset Products to Initial State</button>
+            <button id="resetProductsBtn" onclick="loadProducts()">Reset Products to Initial State</button>
             <button id="addProductBtn">Add Product</button>
-            <input type="text" id="searchInput" placeholder="Search products...">
+            <input type="text" id="searchInput" placeholder="Search products..." onchange="searchProduct()">
             <select id="sortSelect" onchange="sortTable(value)">
                 <option value="name">Sort by Name</option>
                 <option value="id">Sort by ID</option>
@@ -75,24 +76,7 @@
         a API local storage e verificar a correta remoção do produto na lista de produtos exibidas no dashboard. 
     -->
     <script>
-        // JavaScript to show a delete confirmation alert
-        document.addEventListener('DOMContentLoaded', () => {
-            // Select all delete buttons
-            const deleteButtons = document.querySelectorAll('.delete-btn');
-            console.log(deleteButtons);
-            
-            // Add event listener to each delete button
-            deleteButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    // Show confirmation alert
-                    const confirmation = confirm("Are you sure you want to delete this product?");
-                    if (!confirmation) {
-                        // Prevent default action if not confirmed
-                        event.preventDefault();
-                    }
-                });
-            });
-        });
+        
     </script>
 </body>
 </html>
