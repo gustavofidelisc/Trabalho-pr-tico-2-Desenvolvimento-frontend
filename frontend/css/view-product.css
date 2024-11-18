@@ -1,0 +1,38 @@
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.image-description {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+#main-image {
+    width:30%;
+    height: auto;
+    position: relative;
+    margin: 0 auto;
+}
+
+p{
+    margin-top: 0px; 
+    text-align: left;
+}
+
+li {
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+div{
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    
+}
+

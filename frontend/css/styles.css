@@ -30,16 +30,24 @@ input, select, button {
     border-radius: 5px; 
     border: 1px solid #ccc; 
     box-sizing: border-box; 
+    white-space: normal;    
 }
 
 #registerForm div > input, #role, button {
     margin: 5px 0 5px 0; 
 }
 
-button:hover{
+button:hover, select:hover{
     background: #12124e;
     color: white;
     cursor: pointer;
+}
+
+option{
+    background: #ccc;
+    color: black;
+    cursor: pointer;
+    width: 50%;
 }
 
 p {
@@ -116,8 +124,13 @@ table {
 
 th, td {
     border: 1px solid #ddd; /* Creates a light gray border */
-    padding: 8px; /* Adds some space inside the cells */
-    text-align: left; /* Aligns text to the left */
+    font-size: 16px;
+    text-align: center;
+    padding: 8px;
+}
+
+th{
+    font-size: 12px;
 }
 
 /* Center-align only the images in the second column */
@@ -133,7 +146,6 @@ label{
 #productControls button{
     height: auto;
     width: 60%;
-    white-space: nowrap; /* Impede que o texto quebre em várias linhas */
 }
 
 #productTable {
@@ -159,9 +171,27 @@ label{
     color: white;
 }
 
+img{
+    width: 100px;
+    height: 100px;
+}
+
 @media (max-width: 768px) {
     .container {
         width: 90%;
+
+    img{
+        width: 65px;
+        height: 65px;
+    }
+
+    th, td {
+        border: 1px solid #ddd; /* Creates a light gray border */
+        font-size: 11px;
+        text-align: none;
+        padding: 0px;
+    }
+    
     }
 }
 
