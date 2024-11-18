@@ -1,7 +1,7 @@
 // Função para pegar os produtos do localStorage
 function getProducts() {
     const products = JSON.parse(localStorage.getItem('products'));
-    return products ? products : []; // Retorna a lista de produtos ou um array vazio se não houver nenhum
+    return products ? products : []; 
 }
 
 // Função para salvar os produtos no localStorage
@@ -37,12 +37,15 @@ document.getElementById('createProductForm').addEventListener('submit', function
         return;
     }
 
+    // Seleciona o ultimo elemento de product, com o id mais alto
+    const lastProduct = getProducts().pop();
+
     // Converte as imagens em base64
     const reader = new FileReader();
     reader.onloadend = function() {
         // Cria o novo produto
         const newProduct = {
-            id: Date.now(), // Utiliza o timestamp como ID único
+            id: lastProduct.id + 1 || 1,
             name,
             shortDescription,
             fullDescription,
@@ -72,7 +75,7 @@ document.getElementById('createProductForm').addEventListener('submit', function
         saveProducts(products);
 
         // Redireciona para o painel ou outra página
-        window.location.href = 'dashboard.html'; // Mude para a URL desejada
+        window.location.href = 'dashboard.html'; // Redireciona para o painel
     };
 
     // Lê a imagem principal como URL
@@ -106,7 +109,5 @@ document.getElementById('addDetailBtn').addEventListener('click', function() {
         // Limpa os campos de entrada de detalhe
         document.querySelector('#productDetails input[type="text"]:first-of-type').value = '';
         document.querySelector('#productDetails input[type="text"]:last-of-type').value = '';
-    } else {
-        alert("Please enter both detail name and value.");
-    }
+    } 
 });

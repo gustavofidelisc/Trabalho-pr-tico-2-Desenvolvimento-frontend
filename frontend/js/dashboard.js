@@ -359,9 +359,9 @@ function renderProducts(page, filter) {
             <td>${product.brand}</td>
             <td>${product.category}</td>
             <td>
-                <button class="view-btn" onclick="viewProduct(${i})">View Details</button>
-                <button class="edit-btn admin-only" onclick="editProduct(${i})">Edit</button>
-                <button class="delete-btn admin-only" onclick="deleteProduct(${i})">Delete</button>
+                <button class="view-btn" onclick="viewProduct(${ Math.floor(Number(product.id))})">View Details</button>
+                <button class="edit-btn admin-only" onclick="editProduct(${ Math.floor(Number(product.id)) })">Edit</button>
+                <button class="delete-btn admin-only" onclick="deleteProduct(${ Math.floor(Number(product.id))})">Delete</button>
             </td>
         `;
         productList.appendChild(row);
@@ -373,38 +373,54 @@ function createProduct(){
     window.location.href = './create-product.html';
 }
 
+// funcao para buscar produto pelo id 
+
+function searchProductById(index){
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    return products.filter(product => product.id == index)[0];
+}
+    
+
 
 // Função para visualizar detalhes de um produto
 function viewProduct(index) {
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    localStorage.setItem('product', JSON.stringify(products[index]));
+    localStorage.setItem('product', JSON.stringify(searchProductById(index)));
     window.location.href = './view-product.html';
 }
 
 //funcao para editar um produto
-function editProduct(index){
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    
-    localStorage.setItem('product', JSON.stringify(products[index]));
+function editProduct(index){    
+    localStorage.setItem('product', JSON.stringify(searchProductById(index)));
     window.location.href = './edit-product.html';
 }
 
 // Função para deletar um produto
-function deleteProduct(index) {
+function deleteProduct(productId) {
     // Confirmação para deletar
-    const confirmation = confirm("Are you sure you want to delete the selected products?");
+    const confirmation = confirm("Are you sure you want to delete the selected product?");
     if (!confirmation) return;
 
     // Obtém a lista de produtos do localStorage
     let products = JSON.parse(localStorage.getItem('products')) || [];
-    
+
+    // Encontra o índice do produto
+    const productIndex = products.findIndex(product => product.id === productId);
+
+    // Verifica se o produto foi encontrado
+    if (productIndex === -1) {
+        alert("Product not found.");
+        return;
+    }
+
     // Remove o item do array e atualiza o localStorage
-    products.splice(index, 1);
+    products.splice(productIndex, 1);
     localStorage.setItem('products', JSON.stringify(products));
 
     // Recarrega os produtos da página atual após deletar o item
     loadProducts();
 }
+
+
 
 // Renderiza a paginação
 function renderPagination(filter) {

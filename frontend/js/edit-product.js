@@ -1,4 +1,15 @@
-// Recuperando os dados do produto do localStorage
+// Função para pegar os produtos do localStorage
+function getProducts() {
+    const products = JSON.parse(localStorage.getItem('products'));
+    return products ? products : [];
+}
+
+// Função para salvar os produtos no localStorage
+function saveProducts(products) {
+    localStorage.setItem('products', JSON.stringify(products));
+}
+
+// Recuperando o produto do localStorage
 const product = JSON.parse(localStorage.getItem('product'));
 
 // Verificando se os dados do produto estão disponíveis
@@ -10,73 +21,34 @@ if (product) {
     document.getElementById('fullDescription').value = product.fullDescription;
     document.getElementById('brand').value = product.brand;
     document.getElementById('category').value = product.category;
-
-    // Preenchendo o preço e desconto (removendo o símbolo de moeda para armazenar valores numéricos)
     document.getElementById('listPrice').value = parseFloat(product.listPrice.replace('$', ''));
     document.getElementById('discountPercent').value = parseInt(product.discount.replace('%', ''));
-
-    // Definindo os checkboxes como 'checked' ou 'unchecked' com base nos valores do produto
     document.getElementById('enabled').checked = product.enabled;
     document.getElementById('inStock').checked = product.inStock;
 
-    // Preenchendo as dimensões e peso (extraindo os valores de dimensões e peso)
+    // Preenchendo dimensões e peso
     const dimensions = product.dimensions.split(' x ');
     document.getElementById('length').value = parseFloat(dimensions[0]);
     document.getElementById('width').value = parseFloat(dimensions[1]);
     document.getElementById('height').value = parseFloat(dimensions[2]);
-
     document.getElementById('weight').value = parseFloat(product.weight.replace(' lbs', ''));
-
-    // Preenchendo o custo (também removendo o símbolo de moeda)
     document.getElementById('cost').value = parseFloat(product.cost.replace('$', ''));
 
-    // Atualizando a imagem principal
-    const mainImage = document.getElementById('mainImage');
+    // Preenchendo a imagem principal
     const currentMainImage = document.getElementById('currentMainImage');
-    const imagePath = product.image; // Supondo que a imagem esteja na pasta 'images/'
-
-    
-    // Atribuindo o caminho da imagem para o elemento de imagem
+    currentMainImage.innerHTML = ''; // Limpa a imagem atual
     const imgElement = document.createElement('img');
-    imgElement.src = imagePath;  // Caminho da imagem (certifique-se de que a imagem está acessível na pasta indicada)
+    imgElement.src = product.image;
     imgElement.alt = product.name;
-    imgElement.style.maxWidth = '200px';  // Ajuste o tamanho da imagem conforme necessário
+    imgElement.style.maxWidth = '200px';
     currentMainImage.appendChild(imgElement);
-
-    // Preenchendo os detalhes do produto
-    const productDetails = document.getElementById('productDetails');
-    product.details.forEach(detail => {
-        const newDetail = document.createElement('div');
-        newDetail.innerHTML = `
-            <input type="text" value="${detail}" placeholder="Detail">
-            <button type="button" onclick="removeDetail(this)">Remove</button>
-        `;
-        productDetails.appendChild(newDetail);
-    });
 }
 
-// Função para remover detalhes do produto
-function removeDetail(button) {
-    const detailDiv = button.parentElement;
-    detailDiv.remove();
-}
-
-// Adicionando um novo detalhe ao produto
-document.querySelector('#productDetails button[type="button"]').addEventListener('click', function() {
-    const productDetails = document.getElementById('productDetails');
-    const newDetail = document.createElement('div');
-    newDetail.innerHTML = `
-        <input type="text" placeholder="New Detail">
-        <button type="button" onclick="removeDetail(this)">Remove</button>
-    `;
-    productDetails.appendChild(newDetail);
-});
-
-// Manipulando o envio do formulário
+// Lidar com o envio do formulário de edição
 document.getElementById('editProductForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    // Criando o objeto do produto com os dados atualizados
+    // Captura os valores do formulário
     const updatedProduct = {
         id: document.getElementById('productId').value,
         name: document.getElementById('name').value,
@@ -84,7 +56,6 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
         fullDescription: document.getElementById('fullDescription').value,
         brand: document.getElementById('brand').value,
         category: document.getElementById('category').value,
-        image: document.getElementById('mainImage').files[0]?.name || product.image,  // Se não houver novo arquivo, mantém o antigo
         listPrice: `$${parseFloat(document.getElementById('listPrice').value).toFixed(2)}`,
         discount: `${parseInt(document.getElementById('discountPercent').value)}%`,
         enabled: document.getElementById('enabled').checked,
@@ -92,12 +63,52 @@ document.getElementById('editProductForm').addEventListener('submit', function(e
         dimensions: `${parseFloat(document.getElementById('length').value)} x ${parseFloat(document.getElementById('width').value)} x ${parseFloat(document.getElementById('height').value)}`,
         weight: `${parseFloat(document.getElementById('weight').value)} lbs`,
         cost: `$${parseFloat(document.getElementById('cost').value).toFixed(2)}`,
-        details: Array.from(document.querySelectorAll('#productDetails div')).map(detailDiv => detailDiv.querySelector('input').value)
+        details: Array.from(document.querySelectorAll('#productDetails div input')).map(input => input.value)
     };
 
-    // Atualizando o produto no localStorage
-    localStorage.setItem('product', JSON.stringify(updatedProduct));
+    const mainImageFile = document.getElementById('mainImage').files[0];
 
-    // Mensagem de confirmação (você pode substituir por uma ação real, como redirecionar)
-    alert('Product updated successfully!');
+    // Atualiza a imagem principal, se uma nova for selecionada
+    if (mainImageFile) {
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            updatedProduct.image = reader.result; // Atualiza a imagem principal
+            updateProductInLocalStorage(updatedProduct);
+        };
+        reader.readAsDataURL(mainImageFile);
+    } else {
+        // Mantém a imagem atual se nenhuma nova imagem for selecionada
+        updatedProduct.image = product.image;
+        updateProductInLocalStorage(updatedProduct);
+    }
 });
+
+// Atualiza o produto no localStorage
+function updateProductInLocalStorage(updatedProduct) {
+    const products = getProducts();
+    const productIndex = products.findIndex(p => p.id === Number(updatedProduct.id));
+    if (productIndex === -1) {
+        alert('Product not found!');
+        return;
+    }
+    products[productIndex] = updatedProduct;
+    saveProducts(products);
+
+    alert('Product updated successfully!');
+    window.location.href = 'dashboard.html'; // Redireciona após a atualização
+}
+
+// Adicionar e remover detalhes
+document.getElementById('addDetailBtn').addEventListener('click', function() {
+    const productDetails = document.getElementById('productDetails');
+    const newDetail = document.createElement('div');
+    newDetail.innerHTML = `
+        <input type="text" placeholder="Detail">
+        <button type="button" onclick="removeDetail(this)">Remove</button>
+    `;
+    productDetails.appendChild(newDetail);
+});
+
+function removeDetail(button) {
+    button.parentElement.remove();
+}

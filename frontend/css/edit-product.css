@@ -28,7 +28,6 @@ input {
     
 }
 
-/* Estilizando o contêiner */
 .checkbox {
     display: flex;          /* Flexbox para colocar os itens lado a lado */
     gap: 20px;              /* Espaço entre os checkboxes */
