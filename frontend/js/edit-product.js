@@ -11,6 +11,7 @@ function saveProducts(products) {
 
 // Recuperando o produto do localStorage
 const product = JSON.parse(localStorage.getItem('product'));
+console.log(product);
 
 // Verificando se os dados do produto estão disponíveis
 if (product) {

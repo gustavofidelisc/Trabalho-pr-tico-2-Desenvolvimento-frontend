@@ -1,6 +1,5 @@
 const product = JSON.parse(localStorage.getItem('product'));
 
-
 // Preenchendo os elementos com base nos dados do produto
 document.getElementById('product-id').textContent = product.id;
 document.getElementById('product-name').textContent = product.name;
