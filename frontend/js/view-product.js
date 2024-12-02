@@ -19,3 +19,6 @@ document.getElementById('dimensions').textContent = product.dimensions;
 document.getElementById('weight').textContent = product.weight;
 document.getElementById('cost').textContent = product.cost;
 
+document.getElementById('product-details-list').innerHTML = product.details.map(detail => {
+    return `<li>${detail.name}: ${detail.value}</li>`;
+}).join('');

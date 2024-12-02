@@ -148,28 +148,21 @@ async function searchProduct(){
 const itemsPerPage = 5;
 
 // Função para carregar produtos da página atual
-function loadProducts(page = 1, filter) {
-    renderProducts(page, filter);
-    renderPagination(filter);
+async function loadProducts( page) {
+    const productList = document.getElementById('productList');
+    productList.innerHTML = '';
+    await renderProducts(page );
+    await renderPagination();
 }
 
 // Renderiza a lista de produtos na tabela
-async function renderProducts(page, filter) {
-    if(filter){
-        var products = JSON.parse(localStorage.getItem('productsFilter')) || [];
-    }
-    else{
-        var products = JSON.parse(localStorage.getItem('products')) || [];
-    }
-    const productList = document.getElementById('productList');
-    productList.innerHTML = ''; // Limpa a tabela
+async function renderProducts(page) {
 
     products = await fetchProducts(page - 1)
 
     for (let i = 0; i < products.numberOfElements; i++) {
         const product = products['content'][i];
         const row = document.createElement('tr');
-
         row.innerHTML = `
             <td>${product.id}</td>
             <td><img src="${product.image}" alt="${product.name}"></td>
@@ -213,49 +206,42 @@ async function editProduct(index){
 }
 
 // Função para deletar um produto
-function deleteProduct(productId) {
+async function deleteProduct(productId) {
     // Confirmação para deletar
     const confirmation = confirm("Are you sure you want to delete the selected product?");
     if (!confirmation) return;
 
-    // Obtém a lista de produtos do localStorage
-    let products = JSON.parse(localStorage.getItem('products')) || [];
+    const base_url = 'http://127.0.0.1:8080/products/';
 
-    // Encontra o índice do produto
-    const productIndex = products.findIndex(product => product.id === productId);
-
-    // Verifica se o produto foi encontrado
-    if (productIndex === -1) {
-        alert("Product not found.");
-        return;
-    }
-
-    // Remove o item do array e atualiza o localStorage
-    products.splice(productIndex, 1);
-    localStorage.setItem('products', JSON.stringify(products));
+    const url_with_param = base_url + productId;
+    console.log(productId);
+    console.log(url_with_param);
+    const resp = fetch(url_with_param, {
+        method: 'DELETE',
+        headers: new Headers({
+            headers: new Headers({
+                'Authorization': 'Basic '+btoa('rey:rey-pass'), 
+                'Content-Type': 'application/x-www-form-urlencoded'
+            })})
+    })
 
     // Recarrega os produtos da página atual após deletar o item
-    loadProducts();
+    await loadProducts(products.pageable.pageNumber);
 }
 
 
 
 // Renderiza a paginação
-function renderPagination(filter) {
-    if(filter){
-        var products = JSON.parse(localStorage.getItem('productsFilter')) || [];
-    }
-    else{
-        var products = JSON.parse(localStorage.getItem('products')) || [];
-    }
-    const totalPages = Math.ceil(products.length / itemsPerPage);
+async function renderPagination() {
+
+    const totalPages = Math.ceil(products.totalElements / itemsPerPage);
     const paginationContainer = document.getElementById('pagination');
     paginationContainer.innerHTML = '';
     if(totalPages >1){
         for (let page = 1; page <= totalPages; page++) {
             const pageButton = document.createElement('button');
             pageButton.textContent = page;
-            pageButton.onclick = () => loadProducts(page);
+            pageButton.onclick = async () => await loadProducts(page);
             paginationContainer.appendChild(pageButton);
         }
 

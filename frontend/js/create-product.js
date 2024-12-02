@@ -1,16 +1,5 @@
-// Função para pegar os produtos do localStorage
-function getProducts() {
-    const products = JSON.parse(localStorage.getItem('products'));
-    return products ? products : []; 
-}
-
-// Função para salvar os produtos no localStorage
-function saveProducts(products) {
-    localStorage.setItem('products', JSON.stringify(products));
-}
-
-// Função para lidar com o envio do formulário
-document.getElementById('createProductForm').addEventListener('submit', function(event) {
+let newProduct ={};
+document.getElementById('createProductForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Evita o comportamento padrão de envio do formulário
 
     // Captura os valores do formulário
@@ -19,67 +8,70 @@ document.getElementById('createProductForm').addEventListener('submit', function
     const fullDescription = document.getElementById('fullDescription').value;
     const brand = document.getElementById('brand').value;
     const category = document.getElementById('category').value;
-    const mainImage = document.getElementById('mainImage').files[0];
-    const featuredImages = document.getElementById('featuredImages').files;
-    const listPrice = document.getElementById('listPrice').value;
-    const discountPercent = document.getElementById('discountPercent').value;
-    const enabled = document.getElementById('enabled').checked;
+    const listPrice = parseFloat(document.getElementById('listPrice').value);
+    const discountPercent = parseFloat(document.getElementById('discountPercent').value);
+    const isEnabled = document.getElementById('enabled').checked;
     const inStock = document.getElementById('inStock').checked;
-    const length = document.getElementById('length').value;
-    const width = document.getElementById('width').value;
-    const height = document.getElementById('height').value;
-    const weight = document.getElementById('weight').value;
-    const cost = document.getElementById('cost').value;
+    const length = parseFloat(document.getElementById('length').value);
+    const width = parseFloat(document.getElementById('width').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const cost = parseFloat(document.getElementById('cost').value);
 
-    // Verifica se a imagem principal foi escolhida
-    if (!mainImage) {
-        alert("Please select a main image.");
-        return;
-    }
 
-    // Seleciona o ultimo elemento de product, com o id mais alto
-    const lastProduct = getProducts().pop();
+    // Captura os detalhes adicionados
+    const details = [];
+    document.querySelectorAll('#productDetails div').forEach(detailDiv => {
+        const detailName = detailDiv.querySelector('input[type="text"]:first-of-type').value;
+        const detailValue = detailDiv.querySelector('input[type="text"]:last-of-type').value;
+        if (detailName && detailValue) {
+            details.push({ name: detailName, value: detailValue });
+        }
+    });
 
-    // Converte as imagens em base64
-    const reader = new FileReader();
-    reader.onloadend = function() {
-        // Cria o novo produto
-        const newProduct = {
-            id: lastProduct.id + 1 || 1,
-            name,
-            shortDescription,
-            fullDescription,
-            brand,
-            category,
-            image: reader.result, // A imagem principal em base64
-            featuredImages: Array.from(featuredImages).map(file => {
-                return URL.createObjectURL(file); // Converte cada imagem em URL temporária
-            }),
-            listPrice,
-            discount: discountPercent,
-            enabled,
-            inStock,
-            dimensions: `${length} x ${width} x ${height}`,
-            weight,
-            cost,
-            details: [], // Detalhes podem ser adicionados depois
-            creationTime: new Date().toLocaleString(),
-            updateTime: new Date().toLocaleString()
-        };
-
-        // Pega os produtos existentes e adiciona o novo
-        const products = getProducts();
-        products.push(newProduct);
-
-        // Salva os produtos de volta no localStorage
-        saveProducts(products);
-
-        // Redireciona para o painel ou outra página
-        window.location.href = 'dashboard.html'; // Redireciona para o painel
+    // Cria o novo produto no formato correto
+    newProduct = {
+        name,
+        shortDescription,
+        fullDescription,
+        brand,
+        category,
+        price: null,
+        discount: discountPercent,
+        isEnabled,
+        inStock,
+        creationTime: new Date().toISOString(),
+        updateTime: new Date().toISOString(),
+        dimension: {
+            length,
+            width,
+            height,
+            weight
+        },
+        cost,
+        details: details,
+        listPrice
     };
 
-    // Lê a imagem principal como URL
-    reader.readAsDataURL(mainImage);
+
+    // Envia o POST para o backend
+    await fetch("http://127.0.0.1:8080/products", {
+        method: 'POST',
+        headers: {
+            'Authorization': 'Basic ' + btoa('rey:rey-pass'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newProduct)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Product created successfully!');
+        } else {
+            alert('Failed to create the product.');
+        }
+    });
+
+    window.location.href = './dashboard.html';
 });
 
 // Função para adicionar detalhes ao produto
