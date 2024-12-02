@@ -1,5 +1,7 @@
+let sortBy = 'name';
+
 // função para obter produtos da API
-async function fetchProducts(page, size=5, sort='id') {
+async function fetchProducts(page, size=5, sort=sortBy) {
 
     const base_url = 'http://127.0.0.1:8080/products?';
     var products = [];
@@ -101,27 +103,8 @@ window.onload = function() {
 // Função para ordenar os elementos da tabela
 
 function sortTable(value){
-
-    let sorters = {
-        name : function(a,b) {
-            return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0));
-        },
-        id : function(a,b) {
-            return (a.id - b.id);
-        },
-        brand : function(a,b) {
-            return ((a.brand < b.brand) ? -1 : ((a.brand > b.brand) ? 1 : 0));
-        },
-        category : function(a,b) {
-            return ((a.category < b.category) ? -1 : ((a.category > b.category) ? 1 : 0));
-        }
-    };
-
-    const products = JSON.parse(localStorage.getItem('products')) || [];
-    products.sort(sorters[value]);
-    localStorage.setItem('products', JSON.stringify(products));
-
-    loadProducts();
+    sortBy = value;
+    loadProducts(products.pageable.pageNumber +1) ;
 }
 
 //funcao para buscar produtos pelo nome
@@ -136,8 +119,6 @@ async function searchProduct(){
         products = await fetchProducts(page=i)
         all_products = all_products.concat(products['content']);
     }
-    console.log('Concatenado')
-    console.log(all_products);
     const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchValue));
     localStorage.setItem('productsFilter', JSON.stringify(filteredProducts));
     loadProducts(1, true); 
@@ -151,14 +132,14 @@ const itemsPerPage = 5;
 async function loadProducts( page) {
     const productList = document.getElementById('productList');
     productList.innerHTML = '';
-    await renderProducts(page );
+    await renderProducts(page);
     await renderPagination();
 }
 
 // Renderiza a lista de produtos na tabela
 async function renderProducts(page) {
 
-    products = await fetchProducts(page - 1)
+    products = await fetchProducts(page - 1, itemsPerPage, sortBy);
 
     for (let i = 0; i < products.numberOfElements; i++) {
         const product = products['content'][i];
@@ -250,4 +231,3 @@ async function renderPagination() {
 
 // Carrega a primeira página ao iniciar
 loadProducts();
-
