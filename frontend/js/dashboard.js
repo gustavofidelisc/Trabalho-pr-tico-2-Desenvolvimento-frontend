@@ -104,7 +104,9 @@ window.onload = function() {
 
 function sortTable(value){
     sortBy = value;
-    loadProducts(products.pageable.pageNumber +1) ;
+    loadProducts(products.pageable.pageNumber + 1);
+    console.log(value);
+    console.log(products.pageable.pageNumber + 1);
 }
 
 //funcao para buscar produtos pelo nome
@@ -112,37 +114,41 @@ function sortTable(value){
 async function searchProduct(){
     const searchInput = document.getElementById('searchInput');
     const searchValue = searchInput.value.toLowerCase();
-    let all_products = [];
+
     products = await fetchProducts(page=0)
-    all_products.push(products['content']);
-    for (let i = 0; i < products.totalPages; i++) {
-        products = await fetchProducts(page=i)
-        all_products = all_products.concat(products['content']);
-    }
-    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchValue));
+    var totalElements = products.totalElements;
+
+    products = await fetchProducts(page=0, size=totalElements);
+    productsList = products['content']
+    
+    const filteredProducts = productsList.filter(product => product.name.toLowerCase().includes(searchValue));
     localStorage.setItem('productsFilter', JSON.stringify(filteredProducts));
-    loadProducts(1, true); 
+
+    clearProductList();
+    createProductsTable(filteredProducts);
 }
+
 
 
 // Configura o número de itens por página
 const itemsPerPage = 5;
 
-// Função para carregar produtos da página atual
-async function loadProducts( page) {
+function clearProductList(){
     const productList = document.getElementById('productList');
     productList.innerHTML = '';
+}
+
+// Função para carregar produtos da página atual
+async function loadProducts(page) {
+    clearProductList();
     await renderProducts(page);
     await renderPagination();
 }
 
-// Renderiza a lista de produtos na tabela
-async function renderProducts(page) {
-
-    products = await fetchProducts(page - 1, itemsPerPage, sortBy);
-
-    for (let i = 0; i < products.numberOfElements; i++) {
-        const product = products['content'][i];
+// função para criar a tabela de produtos
+function createProductsTable(products){
+    for (let i = 0; i < products.length; i++) {
+        const product = products[i];
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${product.id}</td>
@@ -158,6 +164,14 @@ async function renderProducts(page) {
         `;
         productList.appendChild(row);
     }
+}
+
+// Renderiza a lista de produtos na tabela
+async function renderProducts(page) {
+
+    products = await fetchProducts(page - 1, itemsPerPage, sortBy);
+
+    createProductsTable(products['content']);
 }
 // funcao para criar produto
 
