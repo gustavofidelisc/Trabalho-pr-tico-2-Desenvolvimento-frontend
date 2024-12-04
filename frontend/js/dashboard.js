@@ -1,6 +1,5 @@
 let sortBy = 'name';
 
-// função para obter produtos da API
 async function fetchProducts(page, size=5, sort=sortBy) {
 
     const base_url = 'http://127.0.0.1:8080/products?';
@@ -23,9 +22,9 @@ async function fetchProducts(page, size=5, sort=sortBy) {
     if (resp.ok) {
         products = await resp.json();
     }else{
-        console.log("Algo deu errado! Código de Resposta: ", resp.status);
+        alert("Algo deu errado! Código de Resposta: ", resp.status);
     }
-    console.log(products);
+
     return products
 }
 
@@ -46,7 +45,7 @@ async function fetchProductById(id){
     if (resp.ok) {
         product = await resp.json();
     }else{
-        console.log("Algo deu errado! Código de Resposta: ", resp.status);
+        alert("Algo deu errado! Código de Resposta: ", resp.status);
     }
 
     return product;
@@ -229,7 +228,7 @@ async function deleteProduct(productId) {
 // Renderiza a paginação
 async function renderPagination() {
 
-    const totalPages = Math.ceil(products.totalElements / itemsPerPage);
+    const totalPages = products.totalPages;
     const paginationContainer = document.getElementById('pagination');
     paginationContainer.innerHTML = '';
     if(totalPages >1){
